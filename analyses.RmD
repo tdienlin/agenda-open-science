@@ -1,5 +1,5 @@
 ---
-title: "A Manifesto for Open Science in Communication"
+title: "An Agenda for Open Science in Communication"
 ---
 
 ```{r warning=F, message=F}
@@ -13,9 +13,9 @@ d %<>%
   mutate(
     Mean.pwr.k = pwr.r.test(Mean.n.k, Mean.r)$power,
     Median.pwr.k = pwr.r.test(Median.n.k, Median.r)$power,
-    Median.pwr.s = pwr.r.test(Median.n.k, .1)$power,
-    Median.pwr.sm = pwr.r.test(Median.n.k, .2)$power,
-    Median.pwr.m = pwr.r.test(Median.n.k, .3)$power,
+    Median.pwr.10 = pwr.r.test(Median.n.k, .1)$power,
+    Median.pwr.15 = pwr.r.test(Median.n.k, .15)$power,
+    Median.pwr.20 = pwr.r.test(Median.n.k, .2)$power,
   ) %>% 
   mutate_at(vars(SD.n, Mean.n.k, Median.n.k), funs(round(., 0))) %>% 
   mutate_at(vars(contains("pwr")), funs(round(., 2))) %>% 
@@ -23,10 +23,10 @@ d %<>%
     "Topic area" = Topic.area, 
     "Effect: Median r" = Median.r,
     "Effect: Median N" = Median.n.k,
-    "Power: Effects reported" = Median.pwr.k,
-    "Power: Small effects" = Median.pwr.s,
-    "Power: Small-medium effects" = Median.pwr.sm,
-    "Power: Medium effects" = Median.pwr.m
+    "Power: r = Median r" = Median.pwr.k,
+    "Power: r = .10" = Median.pwr.10,
+    "Power: r = .15" = Median.pwr.15,
+    "Power: r = .20" = Median.pwr.20
   ) %>% 
   print() %>% 
   write.csv("table_1.csv", row.names = FALSE)
