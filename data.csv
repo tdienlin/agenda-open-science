@@ -1,8 +1,8 @@
-Topic area, Number of metaanalyses, Mean r, SD r, Median r, Mean k, SD k, Median k, Mean n, SD n, Median n
-Persuasion, 37, .18, .19, .13, 51, 48, 38, 10213, 16697, 4269
-Media, 35, .20, .11, .18, 69, 189, 25, 10889, 20882, 5456
-Interpersonal, 34, .24, .15, .20, 37, 38, 22, 18445, 67422, 3631
-Instructional, 23, .24, .15, .22, 44, 37, 29, 16069, 23131, 6206
-Health, 15, .18, .13, .14, 34, 31, 23, 493172, 1771956, 5866
-Organizational Group, 5, .25, .18, .22, 53, 69, 19, 2565, 2497, 1956
-Combined, 149, .21, .15, .18, 49, 98.45, 28, 63094, 572.231, 4663
+Topic area, Number of metaanalyses, Mean k, SD k, Median k, Mean n, SD n, Median n, Mean r, SD r, Median r
+Persuasion,37,51,48,38,10213,16697,4269,0.18,0.19,0.13
+Media,35,69,189,25,10889,20882,5456,0.2,0.11,0.18
+Interpersonal,34,37,38,22,18445,67422,3631,0.24,0.15,0.2
+Instructional,23,44,37,29,16069,23131,6206,0.24,0.15,0.22
+Health,15,34,31,23,493172,1771956,5866,0.18,0.13,0.14
+Organizational Group,5,53,69,19,2565,2497,1956,0.25,0.18,0.22
+Combined,149,49,98.45,28,63094,572.231,4663,0.21,0.15,0.18
