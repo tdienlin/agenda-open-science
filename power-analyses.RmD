@@ -1,0 +1,111 @@
+---
+title: "An Agenda for Open Science in Communication"
+subtitle: "Power Analyses"
+# output: "pdf_document"
+output: "html_document"
+---
+
+```{r warning=F, message=F, include=F}
+library(esc); library(magrittr); library(pwr); library(tidyverse)
+options(width = 120)
+knitr::opts_chunk$set(echo = F)
+```
+
+# Description of the field Communication
+
+Data taken from Rains, S. A., Levine, T. R., & Weber, R. (2018). Sixty years of quantitative communication research summarized: Lessons from 149 meta-analyses. Annals of the International Communication Association, 42(2), 105–124. https://doi.org/10.1080/23808985.2018.1446350.
+
+```{r warning=F, message=F}
+# load data
+d <- read.csv("data.csv")
+
+# calculate average and typical sample size (n) per effect (k)
+d %<>%
+  mutate(
+    Mean.n.k = Mean.n / Mean.k,
+    Median.n.k = Median.n / Median.k
+    ) %>% 
+  mutate_at(vars(SD.n, Mean.n.k, Median.n.k), funs(round(., 0)))
+
+d %>% 
+  select(Topic.area : Median.n) %>% 
+  print()
+
+d %>% 
+  select(Topic.area, Mean.r : Median.n.k) %>% 
+  print()
+```
+
+# Transformation to other effects sizes
+
+It is possible to directly transform most effect sizes. Here, we transfer the reported effect size r to for example Cohen's d. For more information, see, for example, https://www.psychometrica.de/effect_size.html.
+
+```{r}
+d %<>%  
+  mutate(
+    Median.etasq = eta_squared(r = Median.r),
+    Median.d = cohens_d(r = Median.r),
+    Median.odds = odds_ratio(r = Median.r),
+    Median.f = cohens_f(r = Median.r)
+    )
+
+d %>% 
+  mutate_at(vars(starts_with("Med")), funs(round(., 2))) %>% 
+  select(Topic.area, Median.r, Median.d, Median.etasq, Median.odds, Median.f) %>% 
+  print
+```
+
+
+# Estimated power for correlational designs
+
+Here we estimate the statistical power for a bivariate correlational design for four different potential effect sizes.
+
+```{r warning=F, message=F}
+# calculate power for actual and hypothetical correlational designs
+d %<>% 
+  mutate(
+    Median.pwr.r = pwr.r.test(Median.n.k, Median.r)$power,
+    Median.pwr.10 = pwr.r.test(Median.n.k, .1)$power,
+    Median.pwr.15 = pwr.r.test(Median.n.k, .15)$power,
+    Median.pwr.20 = pwr.r.test(Median.n.k, .2)$power,
+  )
+
+d %>% 
+  mutate_at(vars(contains("pwr")), funs(round(., 2))) %>% 
+  select(
+    "Topic area" = Topic.area,
+    "r = Median r" = Median.pwr.r,
+    "r = .10" = Median.pwr.10,
+    "r = .15" = Median.pwr.15,
+    "r = .20" = Median.pwr.20
+  ) %>% 
+  print
+```
+
+# Power analyses for other designs
+
+Here, we estimate the statistical power for other typical designs for the actual effect size reported by Rains et al. (2018). 
+
+```{r warning=F, message=F}
+# calculate medium power in the field for other designs
+d %<>% 
+  mutate(
+    Median.pwr.r = pwr.r.test(n = Median.n.k, r = Median.r)$power,
+    Median.pwr.t = pwr.t.test(n = Median.n.k / 2, d = Median.d, type = "two.sample")$power,
+    Median.pwr.f2 = pwr.anova.test(k = 2, n = Median.n.k / 2, f = Median.f)$power,
+    Median.pwr.f3 = pwr.anova.test(k = 3, n = Median.n.k / 3, f = Median.f)$power,
+    Median.pwr.f4 = pwr.anova.test(k = 4, n = Median.n.k / 4, f = Median.f)$power
+  )
+
+d %>% 
+  mutate_at(vars(contains("pwr")), funs(round(., 2))) %>% 
+  select(
+    "Topic area" = Topic.area, 
+    "Correlation" = Median.pwr.r,
+    "t-test" = Median.pwr.t,
+    "ANOVA 2 groups" = Median.pwr.f2,
+    "ANOVA 3 groups" = Median.pwr.f3,
+    "ANOVA 4 groups" = Median.pwr.f4
+  ) %>% 
+  print
+```
