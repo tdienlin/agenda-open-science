@@ -1,8 +1,8 @@
 ---
 title: "An Agenda for Open Science in Communication"
 subtitle: "Power Analyses"
-# output: "pdf_document"
-output: "html_document"
+output: "pdf_document"
+# output: "html_document"
 ---
 
 ```{r warning=F, message=F, include=F}
@@ -11,9 +11,19 @@ options(width = 120)
 knitr::opts_chunk$set(echo = F)
 ```
 
+# Introduction
+
+In this supplementary material, we conduct several power analyses to get a better idea of the typical power in Communication. However, please note that our calculations cannot measure the actual power in the field: For this, we would need a large scale content analysis. Here, we can only approximate the typical power using several proxies; the actual power in the field might be different, it could be both lower or higher. At the same time, our analyses provide some first empirical support for the hypothesis that a large number of studies in Communication are likely to be underpowered.
+
 # Description of the field Communication
 
-Data taken from Rains, S. A., Levine, T. R., & Weber, R. (2018). Sixty years of quantitative communication research summarized: Lessons from 149 meta-analyses. Annals of the International Communication Association, 42(2), 105–124. https://doi.org/10.1080/23808985.2018.1446350.
+Our measures for the typical sample size and the typical effect size were taken from Rains, S. A., Levine, T. R., & Weber, R. (2018). Sixty years of quantitative communication research summarized: Lessons from 149 meta-analyses. Annals of the International Communication Association, 42(2), 105–124. https://doi.org/10.1080/23808985.2018.1446350.
+
+The values for the respective topic areas were taken from Table 2 (p. 110). The values for the row "combined" were taken from the text.  
+
+Here, it is stated that "The 149 meta-analyses in the sample included 7361 distinct effect estimates and 8,517,714 participants. Effect sizes ranged from r = .009 to .845 with a mean of r = .21 (SD = .15) and median of r = .18." (p. 109). 
+
+In addition, we also find that "The 149 meta-analyses included an average of 49 effect estimates (SD = 98.45, median = 28). In many cases, this value reflected the number of primary studies included in a given meta-analysis. Meta-analyses in the sample involved a mean of 63,094 participants (SD = 572,231; median = 4663)."
 
 ```{r warning=F, message=F}
 # load data
@@ -58,7 +68,7 @@ d %>%
 
 # Estimated power for correlational designs
 
-Here we estimate the statistical power for a bivariate correlational design for four different potential effect sizes.
+Here, we estimate the statistical power for four different potential effect sizes. We use the effect size reported by Reins et al. and three other plausible effect sizes (i.e., small, small to moderate, and moderate effects). As a potential study design, we use the scenario of a typical bivariate correlational between-person design.
 
 ```{r warning=F, message=F}
 # calculate power for actual and hypothetical correlational designs
@@ -73,18 +83,18 @@ d %<>%
 d %>% 
   mutate_at(vars(contains("pwr")), funs(round(., 2))) %>% 
   select(
-    "Topic area" = Topic.area,
-    "r = Median r" = Median.pwr.r,
-    "r = .10" = Median.pwr.10,
-    "r = .15" = Median.pwr.15,
-    "r = .20" = Median.pwr.20
+    "Topic.area" = Topic.area,
+    "r=Median.r" = Median.pwr.r,
+    "r=.10" = Median.pwr.10,
+    "r=.15" = Median.pwr.15,
+    "r=.20" = Median.pwr.20
   ) %>% 
   print
 ```
 
 # Power analyses for other designs
 
-Here, we estimate the statistical power for other typical designs for the actual effect size reported by Rains et al. (2018). 
+In this scene, we estimate the statistical power for other typical designs for the actual effect size reported by Rains et al. (2018). 
 
 ```{r warning=F, message=F}
 # calculate medium power in the field for other designs
@@ -100,12 +110,12 @@ d %<>%
 d %>% 
   mutate_at(vars(contains("pwr")), funs(round(., 2))) %>% 
   select(
-    "Topic area" = Topic.area, 
+    "Topic.area" = Topic.area, 
     "Correlation" = Median.pwr.r,
     "t-test" = Median.pwr.t,
-    "ANOVA 2 groups" = Median.pwr.f2,
-    "ANOVA 3 groups" = Median.pwr.f3,
-    "ANOVA 4 groups" = Median.pwr.f4
+    "ANOVA.2.groups" = Median.pwr.f2,
+    "ANOVA.3.groups" = Median.pwr.f3,
+    "ANOVA.4.groups" = Median.pwr.f4
   ) %>% 
   print
 ```

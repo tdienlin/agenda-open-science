@@ -367,9 +367,14 @@ summary {
 </div>
 
 
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>In this supplementary material, we conduct several power analyses to get a better idea of the typical power in Communication for a typical study. However, please note that our calculations cannot measure the actual power in the field: For this, we would need a large scale content analysis. Here, we can only approximate the power using several proxies.</p>
+</div>
 <div id="description-of-the-field-communication" class="section level1">
 <h1>Description of the field Communication</h1>
-<p>Data taken from Rains, S. A., Levine, T. R., &amp; Weber, R. (2018). Sixty years of quantitative communication research summarized: Lessons from 149 meta-analyses. Annals of the International Communication Association, 42(2), 105–124. <a href="https://doi.org/10.1080/23808985.2018.1446350" class="uri">https://doi.org/10.1080/23808985.2018.1446350</a>.</p>
+<p>Our measures for the typical sample size and the typical effect size were taken from Rains, S. A., Levine, T. R., &amp; Weber, R. (2018). Sixty years of quantitative communication research summarized: Lessons from 149 meta-analyses. Annals of the International Communication Association, 42(2), 105–124. <a href="https://doi.org/10.1080/23808985.2018.1446350" class="uri">https://doi.org/10.1080/23808985.2018.1446350</a>.</p>
+<p>The values for the respective topic areas were taken from Table 2 (p. 110). The values for the row “combined” were taken from the text. Here, it is stated that “The 149 meta-analyses in the sample included 7361 distinct effect estimates and 8,517,714 participants. Effect sizes ranged from r = .009 to .845 with a mean of r = .21 (SD = .15) and median of r = .18.” (p. 109).</p>
 <pre><code>##             Topic.area N.analyses Mean.k   SD.k Median.k Mean.n    SD.n Median.n
 ## 1           Persuasion         37     51  48.00       38  10213   16697     4269
 ## 2                Media         35     69 189.00       25  10889   20882     5456
@@ -401,20 +406,20 @@ summary {
 </div>
 <div id="estimated-power-for-correlational-designs" class="section level1">
 <h1>Estimated power for correlational designs</h1>
-<p>Here we estimate the statistical power for a bivariate correlational design for four different potential effect sizes.</p>
-<pre><code>##             Topic area r = Median r r = .10 r = .15 r = .20
-## 1           Persuasion         0.28    0.18    0.35    0.57
-## 2                Media         0.76    0.31    0.60    0.85
-## 3        Interpersonal         0.73    0.25    0.49    0.73
-## 4        Instructional         0.90    0.31    0.59    0.84
-## 5               Health         0.61    0.36    0.67    0.90
-## 6 Organizational Group         0.61    0.17    0.33    0.53
-## 7             Combined         0.65    0.25    0.49    0.74</code></pre>
+<p>Here, we estimate the statistical power for four different potential effect sizes. We use the effect size reported by Reins et al., and three possible other effect sizes for small, small to moderate, and moderate effects. As a potential study design, we use the scenario of a typical bivariate correlational between-person design.</p>
+<pre><code>##             Topic area r=Median r r=.10 r=.15 r=.20
+## 1           Persuasion       0.28  0.18  0.35  0.57
+## 2                Media       0.76  0.31  0.60  0.85
+## 3        Interpersonal       0.73  0.25  0.49  0.73
+## 4        Instructional       0.90  0.31  0.59  0.84
+## 5               Health       0.61  0.36  0.67  0.90
+## 6 Organizational Group       0.61  0.17  0.33  0.53
+## 7             Combined       0.65  0.25  0.49  0.74</code></pre>
 </div>
 <div id="power-analyses-for-other-designs" class="section level1">
 <h1>Power analyses for other designs</h1>
-<p>Here, we estimate the statistical power for other typical designs for the actual effect size reported by Rains et al. (2018).</p>
-<pre><code>##             Topic area Correlation t-test ANOVA 2 groups ANOVA 3 groups ANOVA 4 groups
+<p>In this scene, we estimate the statistical power for other typical designs for the actual effect size reported by Rains et al. (2018).</p>
+<pre><code>##             Topic.area Correlation t-test ANOVA.2.groups ANOVA.3.groups ANOVA.4.groups
 ## 1           Persuasion        0.28   0.28           0.28           0.21           0.18
 ## 2                Media        0.76   0.77           0.77           0.67           0.60
 ## 3        Interpersonal        0.73   0.74           0.74           0.64           0.57
