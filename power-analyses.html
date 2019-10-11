@@ -369,12 +369,14 @@ summary {
 
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
-<p>In this supplementary material, we conduct several power analyses to get a better idea of the typical power in Communication for a typical study. However, please note that our calculations cannot measure the actual power in the field: For this, we would need a large scale content analysis. Here, we can only approximate the power using several proxies.</p>
+<p>In this supplementary material, we conduct several power analyses to get a better idea of the typical power in Communication. However, please note that our calculations cannot measure the actual power in the field: For this, we would need a large scale content analysis. Here, we can only approximate the typical power using several proxies; the actual power in the field might be different, it could be both lower or higher. At the same time, our analyses provide some first empirical support for the hypothesis that a large number of studies in Communication are likely to be underpowered.</p>
 </div>
 <div id="description-of-the-field-communication" class="section level1">
 <h1>Description of the field Communication</h1>
 <p>Our measures for the typical sample size and the typical effect size were taken from Rains, S. A., Levine, T. R., &amp; Weber, R. (2018). Sixty years of quantitative communication research summarized: Lessons from 149 meta-analyses. Annals of the International Communication Association, 42(2), 105–124. <a href="https://doi.org/10.1080/23808985.2018.1446350" class="uri">https://doi.org/10.1080/23808985.2018.1446350</a>.</p>
-<p>The values for the respective topic areas were taken from Table 2 (p. 110). The values for the row “combined” were taken from the text. Here, it is stated that “The 149 meta-analyses in the sample included 7361 distinct effect estimates and 8,517,714 participants. Effect sizes ranged from r = .009 to .845 with a mean of r = .21 (SD = .15) and median of r = .18.” (p. 109).</p>
+<p>The values for the respective topic areas were taken from Table 2 (p. 110). The values for the row “combined” were taken from the text.</p>
+<p>Here, it is stated that “The 149 meta-analyses in the sample included 7361 distinct effect estimates and 8,517,714 participants. Effect sizes ranged from r = .009 to .845 with a mean of r = .21 (SD = .15) and median of r = .18.” (p. 109).</p>
+<p>In addition, we also find that “The 149 meta-analyses included an average of 49 effect estimates (SD = 98.45, median = 28). In many cases, this value reflected the number of primary studies included in a given meta-analysis. Meta-analyses in the sample involved a mean of 63,094 participants (SD = 572,231; median = 4663).”</p>
 <pre><code>##             Topic.area N.analyses Mean.k   SD.k Median.k Mean.n    SD.n Median.n
 ## 1           Persuasion         37     51  48.00       38  10213   16697     4269
 ## 2                Media         35     69 189.00       25  10889   20882     5456
@@ -406,8 +408,8 @@ summary {
 </div>
 <div id="estimated-power-for-correlational-designs" class="section level1">
 <h1>Estimated power for correlational designs</h1>
-<p>Here, we estimate the statistical power for four different potential effect sizes. We use the effect size reported by Reins et al., and three possible other effect sizes for small, small to moderate, and moderate effects. As a potential study design, we use the scenario of a typical bivariate correlational between-person design.</p>
-<pre><code>##             Topic area r=Median r r=.10 r=.15 r=.20
+<p>Here, we estimate the statistical power for four different potential effect sizes. We use the effect size reported by Reins et al. and three other plausible effect sizes (i.e., small, small to moderate, and moderate effects). As a potential study design, we use the scenario of a typical bivariate correlational between-person design.</p>
+<pre><code>##             Topic.area r=Median.r r=.10 r=.15 r=.20
 ## 1           Persuasion       0.28  0.18  0.35  0.57
 ## 2                Media       0.76  0.31  0.60  0.85
 ## 3        Interpersonal       0.73  0.25  0.49  0.73
