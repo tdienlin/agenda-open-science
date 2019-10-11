@@ -1,8 +1,8 @@
 ---
 title: "An Agenda for Open Science in Communication"
 subtitle: "Power Analyses"
-output: "pdf_document"
-# output: "html_document"
+# output: "pdf_document"
+output: "html_document"
 ---
 
 ```{r warning=F, message=F, include=F}
@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = F)
 
 # Introduction
 
-In this supplementary material, we conduct several power analyses to get a better idea of the typical power in Communication. However, please note that our calculations cannot measure the actual power in the field: For this, we would need a large scale content analysis. Here, we can only approximate the typical power using several proxies; the actual power in the field might be different, it could be both lower or higher.
+In this supplementary material, we conduct several power analyses to get a better idea of the typical power in Communication. However, please note that our calculations cannot measure the actual power in the field: For this, we would need a large scale content analysis. Here, we can only approximate the typical power using several assumptions; the actual power in the field might be different, it could be both lower or higher.
 
 # Description of the field Communication
 
